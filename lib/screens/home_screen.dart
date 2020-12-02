@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:ecommerce_api/services/category_service.dart';
+import 'package:ecommerce_api/components/carousel_slider.dart';
+import 'package:ecommerce_api/services/slider_service.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -9,12 +10,23 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  CategoryService _categoryService = CategoryService();
+  SliderService _sliderService = SliderService();
+  List _items = [];
 
   getCategories() async {
-    var categories = await _categoryService.getCategories();
-    var result = json.decode(categories.body);
-    print(result);
+    var url = 'http://192.168.1.3:8000/';
+    var sliders = await _sliderService.getSliders();
+    var result = jsonDecode(sliders.body);
+    if (result != null) {
+      result['data'].forEach((slider) {
+        String imageUrl = slider['image_url'];
+        String img = imageUrl.substring(22, imageUrl.length);
+        String image = url + img;
+        setState(() {
+          _items.add(NetworkImage(image));
+        });
+      });
+    }
   }
 
   @override
@@ -26,12 +38,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ),
-      body: Center(
-        child: Text('Hello everyone !!'),
-      ),
-    );
+        appBar: AppBar(
+          title: Text('Home'),
+        ),
+        body: ListView(
+          children: [carouselSlider(_items)],
+        ));
   }
 }

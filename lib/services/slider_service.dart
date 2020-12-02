@@ -6,7 +6,7 @@ class SliderService {
     _repository = Repository();
   }
 
-  getCategories() async {
-    return await _repository.getUrl('all-categories');
+  getSliders() async {
+    return await _repository.getUrl('all-sliders');
   }
 }
