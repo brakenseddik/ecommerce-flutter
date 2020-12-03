@@ -10,3 +10,9 @@ const kIconCardName = TextStyle(
   color: Colors.black87,
   fontSize: 15,
 );
+
+const KpriceTitle = TextStyle(
+    decoration: TextDecoration.lineThrough,
+    fontSize: 14,
+    color: Colors.red,
+    fontWeight: FontWeight.bold);

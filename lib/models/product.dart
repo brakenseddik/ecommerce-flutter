@@ -1,4 +1,5 @@
 class ProductModel {
   int id;
-  String title, image;
+  double price, discount;
+  String name, image;
 }

@@ -16,6 +16,7 @@ class _CategoryCardState extends State<CategoryCard> {
       height: 100,
       width: 100,
       child: Card(
+        elevation: 2.5,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
