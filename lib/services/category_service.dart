@@ -1,8 +1,8 @@
 import 'package:ecommerce_api/repositories/repository.dart';
 
-class SliderService {
+class CategoryService {
   Repository _repository;
-  SliderService() {
+  CategoryService() {
     _repository = Repository();
   }
 

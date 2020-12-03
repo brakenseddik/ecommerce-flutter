@@ -6,7 +6,7 @@ Widget carouselSlider(items) => SizedBox(
       child: Carousel(
         images: items,
         boxFit: BoxFit.cover,
-        autoplay: true,
+        // autoplay: true,
         dotColor: Colors.deepOrangeAccent,
         dotSize: 8.0,
         dotBgColor: Colors.transparent,
