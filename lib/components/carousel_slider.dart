@@ -7,8 +7,10 @@ Widget carouselSlider(items) => SizedBox(
         images: items,
         boxFit: BoxFit.cover,
         // autoplay: true,
-        dotColor: Colors.deepOrangeAccent,
-        dotSize: 8.0,
         dotBgColor: Colors.transparent,
+        showIndicator: true,
+        overlayShadow: true,
+        overlayShadowColors: Colors.white,
+        overlayShadowSize: 0.7,
       ),
     );

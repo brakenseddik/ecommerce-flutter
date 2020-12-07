@@ -1,18 +1,18 @@
-import 'package:ecommerce_api/config/config.dart';
 import 'package:ecommerce_api/constants/constants.dart';
 import 'package:ecommerce_api/models/product.dart';
 import 'package:ecommerce_api/screens/product_profile.dart';
 import 'package:flutter/material.dart';
 
-class HotProductCard extends StatefulWidget {
-  final ProductModel productModel;
-  HotProductCard({this.productModel});
+class NewProductCard extends StatefulWidget {
+  final ProductModel product;
+
+  NewProductCard({this.product});
 
   @override
-  _HotProductCardState createState() => _HotProductCardState();
+  _NewProductCardState createState() => _NewProductCardState();
 }
 
-class _HotProductCardState extends State<HotProductCard> {
+class _NewProductCardState extends State<NewProductCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -20,11 +20,10 @@ class _HotProductCardState extends State<HotProductCard> {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ProductDetail(this.widget.productModel)));
+                builder: (context) => ProductDetail(this.widget.product)));
       },
       child: Container(
-        height: 150,
-        width: 170,
+        margin: EdgeInsets.all(4.0),
         child: Card(
           elevation: 2.5,
           child: Column(
@@ -34,19 +33,18 @@ class _HotProductCardState extends State<HotProductCard> {
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(7), topRight: Radius.circular(7)),
                 child: Image.network(
-                  this.widget.productModel.image,
+                  this.widget.product.image,
                   height: 130,
-                  width: 170,
+                  width: MediaQuery.of(context).size.width,
                   fit: BoxFit.cover,
                 ),
               ),
               Padding(
                 padding:
-                    const EdgeInsets.only(bottom: 8.0, left: 4.0, right: 4.0),
+                    const EdgeInsets.only(bottom: 4.0, left: 4.0, right: 4.0),
                 child: Text(
-                  this.widget.productModel.name,
-                  style: kIconCardName.copyWith(
-                      fontSize: getProportionateScreenWidth(16)),
+                  this.widget.product.name,
+                  style: kIconCardName.copyWith(fontSize: 16),
                 ),
               ),
               Padding(
@@ -55,13 +53,13 @@ class _HotProductCardState extends State<HotProductCard> {
                 child: Row(
                   children: [
                     Expanded(
-                        child: Text(
-                      "£" + widget.productModel.price.toString(),
-                      style: KpriceTitle,
-                    )),
+                      child: Text(
+                        "£" + widget.product.price.toString(),
+                        style: KpriceTitle,
+                      ),
+                    ),
                     Text("£" +
-                        (widget.productModel.price -
-                                widget.productModel.discount)
+                        (widget.product.price - widget.product.discount)
                             .floor()
                             .toString())
                   ],

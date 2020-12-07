@@ -14,14 +14,12 @@ class _HotProductsState extends State<HotProducts> {
   Widget build(BuildContext context) {
     return Container(
       height: 210,
+      margin: EdgeInsets.all(8.0),
       child: ListView.builder(
+        physics: ClampingScrollPhysics(),
         itemBuilder: (context, index) {
           return HotProductCard(
-            this.widget.products[index].name,
-            this.widget.products[index].image,
-            this.widget.products[index].price,
-            this.widget.products[index].price -
-                this.widget.products[index].discount,
+            productModel: widget.products[index],
           );
         },
         itemCount: widget.products.length,
